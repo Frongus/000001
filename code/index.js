@@ -1,7 +1,8 @@
 const express = require('express');
 const server = express();
 const config = require('./config.json');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const port = process.env.PORT || 4000;
 
 server.use(bodyParser.json());
 server.use(bodyParser.urlencoded({ extended: false }))
@@ -33,4 +34,4 @@ server.get('/admin/:id', (req, res) => {
     }
 });
 
-server.listen(config.PORT, () => {console.log(`Server running on Port: ${config.PORT}`)});
+server.listen(port, () => {console.log(`Server running on Port: ${port}`)});
