@@ -1,5 +1,5 @@
 {
-    "PORT": "80",
+    "PORT": "30432",
     "ADMINPASS": "3883",
     "NEWSMANAGERPASS": "2442",
     "ADMINACCESSPASS": "1234",
