@@ -1,0 +1,130 @@
+*{
+    color: white;
+}
+
+#updateDate {
+    position: absolute;
+    left: 50%;
+    width: 700px;
+}
+
+#navTop table thead tr th h5 a {
+    padding-top: 50px;
+    padding: 25px;
+    color: white;
+    text-decoration: none;
+    transition: all ease-in-out 0.3s;
+}
+
+#navTop table thead tr th h5 a:hover {
+    color: gray;
+}
+
+#navTop {
+    padding: 40px;
+    background-color: #36494E;
+}
+
+#title h1 {
+    transition: all ease-in-out 0.3s;
+}
+
+#title h1:hover {
+    transform: scale(1.01);
+    cursor: pointer;
+}
+
+#navBottom table thead tr th h5 a {
+    padding-top: 50px;
+    padding: 25px;
+    color: white;
+    text-decoration: none;
+    transition: all ease-in-out 0.3s;
+}
+
+#navBottom table thead tr th h5 a:hover {
+    color: black;
+}
+
+#navBottom {
+    width: 100%;
+    padding: 40px;
+    background-color: #597081;
+}
+
+#navBottom table thead tr th {
+    padding-bottom: 20px;
+}
+
+#slogan {
+    position: absolute;
+    left: 60%;
+    width: 700px;
+}
+
+#dataContainer h3 {
+    color: black;
+    text-align: center;
+}
+
+#dataContainer {
+    width: 600px;
+}
+
+#btn {
+    text-align: center;
+    color: black;
+}
+
+#uploadDiv {
+    padding: 30px;
+    border: solid 1px black;
+    border-radius: 5px;
+}
+
+#uploadInfo {
+    padding-top: 15px;
+    color: black;
+}
+
+#checkButton {
+    text-align: center;
+    color: black;
+}
+
+#uploadInfoText {
+    padding-top: 15px;
+    color: black;
+}
+
+#canvas_container {
+    width: 620px;
+    height: 600px;
+    overflow: auto;
+}
+
+#canvas_container {
+  background: #333;
+  text-align: center;
+  border: solid 3px;
+}
+
+#zoom_in {
+    color:black
+}
+
+#zoom_out {
+    color: black;
+}
+
+#go_previous {
+    color: black;
+}
+
+#go_next {
+    color: black;
+}
+
+#current_page {
+    color: black;
+}
