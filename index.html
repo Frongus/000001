@@ -120,9 +120,9 @@
     var correctTranslation;
 
     async function main() {
-        console.log(await vocabularyData);
+       // console.log(await vocabularyData);
         vocubulary = await vocabularyData;
-        console.log('main script is loaded');
+        //console.log('main script is loaded');
         makeTest();
     }
 
@@ -130,7 +130,7 @@
         option1.checked = false;
         option2.checked = false;
         option3.checked = false;
-        console.log(vocubulary.length)
+        //console.log(vocubulary.length)
 
         validationArray = [];
 
@@ -138,11 +138,11 @@
         var rdm2 = Math.floor(Math.random() * vocubulary.length);
         var rdm3 = Math.floor(Math.random() * vocubulary.length);
 
-        console.log({
-            rdm1,
-            rdm2,
-            rdm3
-        })
+        //console.log({
+          //  rdm1,
+         //   rdm2,
+           // rdm3
+        //})
 
         var correntLocation = Math.floor(Math.random() * 3);
 
@@ -158,7 +158,7 @@
 
         validationArray.splice(correntLocation, 0, testedData.GermanTranslation);
 
-        console.log(validationArray);
+        //console.log(validationArray);
 
         option1data.innerHTML = validationArray[0];
         option2data.innerHTML = validationArray[1];
@@ -180,11 +180,12 @@
             alert('No answer selected');
         }
 
-        console.log(correctIndex);
-        console.log(local);
+        //console.log(correctIndex);
+        //console.log(local);
 
         if(correctIndex === local) {
             alert('Correct answer!');
+          	makeTest();
         } else {
             alert('Wrong awnser, correct anwser would have been: ' + correctTranslation);
             makeTest();
