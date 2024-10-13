@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tainer</title>
+</head>
+
+<body>
+    <div id="dataContainer">
+        <ul id="options">
+            <li>
+                <h2 id="Vocab">
+
+                </h2>
+            </li>
+            <li>
+                <ul id="dataList">
+                    <li><input type="checkbox" id="option1"></li>
+                    <li>
+                        <p id="option1Text">Test</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul id="dataList">
+                    <li><input type="checkbox" id="option2"></li>
+                    <li>
+                        <p id="option2Text">Test</p>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <ul id="dataList">
+                    <li><input type="checkbox" id="option3"></li>
+                    <li>
+                        <p id="option3Text">Test</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <button id="submitBtn" onclick="checkTest()">Submit</button>
+        <button id="nextBtn" onclick="makeTest()">Next</button>
+        <p id="Status"></p>
+    </div>
+</body>
+
+</html>
+<style>
+    * {
+        text-align: center;
+    }
+
+    #dataContainer {
+        padding: 60px;
+        border: solid black 1px;
+        border-radius: 15px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    #submitBtn {
+        text-align: center;
+        padding-right: 45px;
+        padding-left: 45px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #nextBtn {
+        text-align: center;
+        padding-right: 45px;
+        padding-left: 45px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    #options {
+        text-align: center;
+        list-style: none;
+    }
+
+    #options li {
+        text-align: center;
+    }
+
+    #dataList {
+        margin-left: -50%;
+    }
+
+    #Vocab {
+        margin-right: 20%;
+    }
+
+    #dataList li {
+        display: inline-block;
+    }
+</style>
+<script>
+    const vocabularyData = fetch('https://raw.githubusercontent.com/Frongus/000001/refs/heads/main/vocubulary.json').then(Response => Response.json());
+
+    var option1 = document.getElementById('option1');
+    var option2 = document.getElementById('option2');
+    var option3 = document.getElementById('option3');
+
+    var Vocab = document.getElementById('Vocab');
+    var status = document.getElementById('Status');
+
+    var option1data = document.getElementById('option1Text');
+    var option2data = document.getElementById('option2Text');
+    var option3data = document.getElementById('option3Text');   
+
+    var validationArray = [];
+    var correctIndex;
+    var vocubulary;
+    var correctTranslation;
+
+    async function main() {
+        console.log(await vocabularyData);
+        vocubulary = await vocabularyData;
+        console.log('main script is loaded');
+        makeTest();
+    }
+
+    function makeTest() {
+        option1.checked = false;
+        option2.checked = false;
+        option3.checked = false;
+        console.log(vocubulary.length)
+
+        validationArray = [];
+
+        var rdm1 = Math.floor(Math.random() * vocubulary.length);
+        var rdm2 = Math.floor(Math.random() * vocubulary.length);
+        var rdm3 = Math.floor(Math.random() * vocubulary.length);
+
+        console.log({
+            rdm1,
+            rdm2,
+            rdm3
+        })
+
+        var correntLocation = Math.floor(Math.random() * 3);
+
+        correctIndex = correntLocation;
+        correctTranslation = vocubulary[rdm1].GermanTranslation
+
+        var testedData = vocubulary[rdm1];
+        var wrong1 = vocubulary[rdm2].GermanTranslation;
+        var wrong2 = vocubulary[rdm3].GermanTranslation;
+
+        validationArray.push(wrong1);
+        validationArray.push(wrong2);
+
+        validationArray.splice(correntLocation, 0, testedData.GermanTranslation);
+
+        console.log(validationArray);
+
+        option1data.innerHTML = validationArray[0];
+        option2data.innerHTML = validationArray[1];
+        option3data.innerHTML = validationArray[2];
+
+        Vocab.innerHTML = testedData.LatinWord;
+    }
+
+    function checkTest() {
+        var local;
+
+        if(option1.checked == true) {
+            local = 0;
+        } else if(option2.checked == true) {
+            local = 1;
+        } else if(option3.checked == true) {
+            local = 2;
+        } else {
+            alert('No answer selected');
+        }
+
+        console.log(correctIndex);
+        console.log(local);
+
+        if(correctIndex === local) {
+            alert('Correct answer!');
+        } else {
+            alert('Wrong awnser, correct anwser would have been: ' + correctTranslation);
+            makeTest();
+        }
+    }
+
+    main();
+</script>
